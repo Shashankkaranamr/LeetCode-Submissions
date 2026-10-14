@@ -1,0 +1,12 @@
+class Solution:
+    def numDistinct(self, s: str, t: str) -> int:
+        m=len(t)
+        if m>len(s):
+            return 0
+        dp=[0]*(m+1)
+        dp[0]=1
+        for ch in s:
+            for j in range(m,0,-1):
+                if t[j-1]==ch:
+                    dp[j]+=dp[j-1]
+        return dp[m]
